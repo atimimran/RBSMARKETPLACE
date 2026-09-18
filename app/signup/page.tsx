@@ -135,11 +135,294 @@
 
 /////////////////////////
 
+// 'use client';
+
+// import { useState } from 'react';
+// import {
+//   Ship,
+//   Globe,
+//   ShieldCheck,
+//   Clock,
+//   TrendingUp,
+// } from 'lucide-react';
+
+// import StepIndicator from './components/StepIndicator';
+// import Step1Basic from './components/Step1Basic';
+// import Step2Business from './components/Step2Business';
+// import Step3Verification from './components/Step3Verification';
+// import logistic from "../images/logistic.jpg";
+
+// export default function Signup() {
+//   const [currentStep, setCurrentStep] = useState(1);
+
+//   const [formData, setFormData] = useState({
+//     accountType: 'shipper',
+//   });
+
+//   const handleNext = () => {
+//     setCurrentStep((prev) => Math.min(prev + 1, 3));
+//   };
+
+//   const handleBack = () => {
+//     setCurrentStep((prev) => Math.max(prev - 1, 1));
+//   };
+
+//   const handleSubmit = () => {
+//     console.log('Complete Signup Form Data:', formData);
+//   };
+
+// return (
+//   <main
+//     className="relative  w-full bg-[#eef4fb] bg-cover bg-center-bottom px-30"
+//   style={{
+//   backgroundImage: `url(${logistic.src})`,
+//   backgroundPosition: "center left",
+//   backgroundSize: "cover",
+// }}
+
+
+//     // style={{
+//     //   backgroundImage:" ",
+//     //     // "url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=90&w=2200&auto=format&fit=crop')",
+//     //   backgroundPosition: 'center bottom',
+//     // }}
+//   >
+
+//     {/* IMAGE OVERLAY */}
+//     <div className="absolute inset-0 bg-gradient-to-r from-[#eef5fd]/95 via-[#eef5fd]/75 to-[#eef5fd]/15 pointer-events-none" />
+
+
+//     {/* CONTENT */}
+//     <div className="relative z-10 w-full px-6 sm:px-8 lg:px-10 xl:px-12">
+
+//       {/* ================= HEADER ================= */}
+
+//       <header className="h-[30px] pt-[30] w-full flex items-center justify-between">
+
+//         {/* BRAND */}
+//         <div className="leading-none">
+
+//           <div className="font-extrabold text-[21px] tracking-[-0.8px] text-[#10203f]">
+//             RBS<span className="text-[#0877ed]"> MARKETPLACE</span>
+//           </div>
+
+//           <div className="text-[9px] text-[#52617a] tracking-wide mt-1">
+//             Move Business Forward
+//           </div>
+
+//         </div>
+
+
+//         {/* SIGN IN */}
+//         <div className="flex items-center gap-3">
+
+//           <span className="text-[12px] text-[#34445d] font-medium hidden sm:block">
+//             Already have an account?
+//           </span>
+
+//           <a
+//             href="/signin"
+//             className="h-9 px-5 rounded-lg border border-[#72a5e8] bg-white flex items-center justify-center text-[12px] font-bold text-[#1769d3] shadow-sm hover:bg-[#f8fbff] transition"
+//           >
+//             Sign in
+//           </a>
+
+//         </div>
+
+//       </header>
+
+
+//       {/* ================= TWO COLUMNS ================= */}
+
+//       <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-5 items-start">
+
+//         {/* ================= LEFT ================= */}
+
+//         <div className="lg:col-span-7 flex flex-col min-h-[calc(100vh-64px)] pt-6 lg:pt-7">
+
+//           {/* HEADING */}
+
+//           <div>
+
+//             <h1 className="max-w-[620px] text-[35px] lg:pt-[50] sm:text-[40px] lg:text-[50px] xl:text-[50px] font-bold tracking-[-1.7px] leading-[1.08] text-[#10203f]">
+//               Join a global trade and logistics marketplace
+//             </h1>
+
+//             <p className="mt-4 text-[13px] lg:text-[14px] leading-[1.55] text-[#52617a] max-w-[440px]">
+//               Connect with verified partners, get the best rates,
+//               and move goods with confidence.
+//             </p>
+
+//           </div>
+
+
+//           {/* FEATURES */}
+
+//           <div className="mt-7 lg:mt-8 space-y-4 lg:text-[50px]">
+
+//             <Feature
+//               icon={<Globe />}
+//               title="Access a global network"
+//               text="Shippers, carriers, brokers, buyers and sellers in one place."
+//             />
+
+//             <Feature
+//               icon={<ShieldCheck />}
+//               title="Verified partners"
+//               text="Work with trusted and audited businesses."
+//             />
+
+//             <Feature
+//               icon={<Clock />}
+//               title="Save time and cost"
+//               text="Compare quotes and get to market faster."
+//             />
+
+//             <Feature
+//               icon={<TrendingUp />}
+//               title="Grow your business"
+//               text="Find new opportunities worldwide."
+//             />
+
+//           </div>
+
+
+//           {/* QUOTE */}
+
+//           <div className="mt-auto pb-8 pt-8">
+
+//             <div className="w-[300px] rounded-xl bg-black/70 backdrop-blur-sm px-7 py-5 shadow-lg">
+
+//               <p className="text-[17px] italic font-medium leading-[1.4] text-white">
+//                 “A simpler way to move
+//                 <br />
+//                 the world's goods.”
+//               </p>
+
+//               <div className="mt-4 w-9 h-[3px] rounded-full bg-[#20b8ff]" />
+
+//             </div>
+
+//           </div>
+
+//         </div>
+
+
+//         {/* ================= RIGHT ================= */}
+
+//         <div className="lg:col-span-5 flex justify-end pt-5 lg:pt-6 pb-8">
+
+//           {/* FORM CARD — UNTOUCHED */}
+
+//           <div className="w-full max-w-[750px] bg-white rounded-2xl border border-gray-200 shadow-[0_5px_25px_rgba(20,45,80,0.10)] p-6 sm:p-7 lg:p-8">
+
+//             <div className="mb-5">
+
+//               <h2 className="text-2xl font-bold text-[#101b35]">
+//                 Create your account
+//               </h2>
+
+//               <p className="text-xs text-gray-500 mt-1">
+//                 Join FreightHub and start connecting with global trade and
+//                 logistics partners.
+//               </p>
+
+//             </div>
+
+
+//             <StepIndicator currentStep={currentStep} />
+
+
+//             {/* EXISTING FORMS — NO CHANGE */}
+
+//             <div className="mt-6">
+
+//               {currentStep === 1 && (
+//                 <Step1Basic
+//                   formData={formData}
+//                   setFormData={setFormData}
+//                   onNext={handleNext}
+//                 />
+//               )}
+
+//               {currentStep === 2 && (
+//                 <Step2Business
+//                   formData={formData}
+//                   setFormData={setFormData}
+//                   onNext={handleNext}
+//                   onBack={handleBack}
+//                 />
+//               )}
+
+//               {currentStep === 3 && (
+//                 <Step3Verification
+//                   formData={formData}
+//                   setFormData={setFormData}
+//                   onBack={handleBack}
+//                   onSubmit={handleSubmit}
+//                 />
+//               )}
+
+//             </div>
+
+//           </div>
+
+//         </div>
+
+//       </div>
+
+//     </div>
+
+//   </main>
+// );
+
+
+// }
+
+
+/* ============================================================
+   FEATURE COMPONENT
+============================================================ */
+
+// function Feature({
+//   icon,
+//   title,
+//   text,
+// }: {
+//   icon: React.ReactNode;
+//   title: string;
+//   text: string;
+// }) {
+//   return (
+//     <div className="flex items-start gap-3">
+
+//       <div className="w-15 h-15 shrink-0 rounded-full bg-white flex items-center justify-center text-[#0877ed] shadow-sm">
+
+//         <span className="w-[25px] h-[30px]">
+//           {icon}
+//         </span>
+
+//       </div>
+
+//       <div className="pt-0.5">
+
+//         <h4 className="text-[13px] lg:text-[18px] font-bold text-[#17243d]">
+//           {title}
+//         </h4>
+
+//         <p className="text-[11px] lg:text-[15px] leading-[1.45] text-[#657188] mt-0.5 max-w-[390px]">
+//           {text}
+//         </p>
+
+//       </div>
+
+//     </div>
+//   );
+// }
 'use client';
 
 import { useState } from 'react';
 import {
-  Ship,
   Globe,
   ShieldCheck,
   Clock,
@@ -171,197 +454,281 @@ export default function Signup() {
     console.log('Complete Signup Form Data:', formData);
   };
 
-return (
-  <main
-    className="relative  w-full bg-[#eef4fb] bg-cover bg-center-bottom px-30"
-  style={{
-  backgroundImage: `url(${logistic.src})`,
-  backgroundPosition: "center left",
-  backgroundSize: "cover",
-}}
+  return (
+    <main
+      className="
+        relative
+        min-h-screen
+        w-full
+        overflow-x-hidden
+        bg-[#eef4fb]
+        bg-cover
+        bg-center
+        px-4
+        sm:px-6
+        lg:px-10
+      "
+      style={{
+        backgroundImage: `url(${logistic.src})`,
+        backgroundPosition: 'center left',
+        backgroundSize: 'cover',
+      }}
+    >
+      {/* IMAGE OVERLAY */}
+      <div className="absolute inset-0 bg-gradient-to-r from-[#eef5fd]/95 via-[#eef5fd]/75 to-[#eef5fd]/15 pointer-events-none" />
 
+      {/* CONTENT */}
+      <div className="relative z-10 w-full max-w-[1600px] mx-auto px-0 sm:px-2 lg:px-4">
 
-    // style={{
-    //   backgroundImage:" ",
-    //     // "url('https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=90&w=2200&auto=format&fit=crop')",
-    //   backgroundPosition: 'center bottom',
-    // }}
-  >
+        {/* ================= HEADER ================= */}
 
-    {/* IMAGE OVERLAY */}
-    <div className="absolute inset-0 bg-gradient-to-r from-[#eef5fd]/95 via-[#eef5fd]/75 to-[#eef5fd]/15 pointer-events-none" />
+        <header className="w-full pt-6 sm:pt-7 lg:pt-8 flex items-center justify-between gap-4">
 
+          {/* BRAND */}
+          <div className="leading-none">
 
-    {/* CONTENT */}
-    <div className="relative z-10 w-full px-6 sm:px-8 lg:px-10 xl:px-12">
+            <div className="font-extrabold text-[19px] sm:text-[21px] tracking-[-0.8px] text-[#10203f]">
+              RBS<span className="text-[#0877ed]"> MARKETPLACE</span>
+            </div>
 
-      {/* ================= HEADER ================= */}
+            <div className="text-[8px] sm:text-[9px] text-[#52617a] tracking-wide mt-1">
+              Move Business Forward
+            </div>
 
-      <header className="h-[30px] pt-[30] w-full flex items-center justify-between">
-
-        {/* BRAND */}
-        <div className="leading-none">
-
-          <div className="font-extrabold text-[21px] tracking-[-0.8px] text-[#10203f]">
-            RBS<span className="text-[#0877ed]"> MARKETPLACE</span>
           </div>
 
-          <div className="text-[9px] text-[#52617a] tracking-wide mt-1">
-            Move Business Forward
+          {/* SIGN IN */}
+          <div className="flex items-center gap-2 sm:gap-3">
+
+            <span className="text-[11px] sm:text-[12px] text-[#34445d] font-medium hidden sm:block">
+              Already have an account?
+            </span>
+
+            <a
+              href="/signin"
+              className="
+                h-9
+                px-4
+                sm:px-5
+                rounded-lg
+                border
+                border-[#72a5e8]
+                bg-white
+                flex
+                items-center
+                justify-center
+                text-[11px]
+                sm:text-[12px]
+                font-bold
+                text-[#1769d3]
+                shadow-sm
+                hover:bg-[#f8fbff]
+                transition
+                whitespace-nowrap
+              "
+            >
+              Sign in
+            </a>
+
           </div>
 
-        </div>
+        </header>
 
+        {/* ================= TWO COLUMNS ================= */}
 
-        {/* SIGN IN */}
-        <div className="flex items-center gap-3">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-5 items-start">
 
-          <span className="text-[12px] text-[#34445d] font-medium hidden sm:block">
-            Already have an account?
-          </span>
+          {/* ================= LEFT ================= */}
 
-          <a
-            href="/signin"
-            className="h-9 px-5 rounded-lg border border-[#72a5e8] bg-white flex items-center justify-center text-[12px] font-bold text-[#1769d3] shadow-sm hover:bg-[#f8fbff] transition"
+          <div
+            className="
+              lg:col-span-7
+              flex
+              flex-col
+              lg:min-h-[calc(100vh-100px)]
+              pt-8
+              sm:pt-10
+              lg:pt-12
+            "
           >
-            Sign in
-          </a>
 
-        </div>
+            {/* HEADING */}
 
-      </header>
+            <div>
 
+              <h1
+                className="
+                  max-w-[620px]
+                  text-[32px]
+                  sm:text-[40px]
+                  lg:text-[50px]
+                  xl:text-[50px]
+                  font-bold
+                  tracking-[-1.7px]
+                  leading-[1.08]
+                  text-[#10203f]
+                "
+              >
+                Join a global trade and logistics marketplace
+              </h1>
 
-      {/* ================= TWO COLUMNS ================= */}
-
-      <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 lg:gap-5 items-start">
-
-        {/* ================= LEFT ================= */}
-
-        <div className="lg:col-span-7 flex flex-col min-h-[calc(100vh-64px)] pt-6 lg:pt-7">
-
-          {/* HEADING */}
-
-          <div>
-
-            <h1 className="max-w-[620px] text-[35px] lg:pt-[50] sm:text-[40px] lg:text-[50px] xl:text-[50px] font-bold tracking-[-1.7px] leading-[1.08] text-[#10203f]">
-              Join a global trade and logistics marketplace
-            </h1>
-
-            <p className="mt-4 text-[13px] lg:text-[14px] leading-[1.55] text-[#52617a] max-w-[440px]">
-              Connect with verified partners, get the best rates,
-              and move goods with confidence.
-            </p>
-
-          </div>
-
-
-          {/* FEATURES */}
-
-          <div className="mt-7 lg:mt-8 space-y-4 lg:text-[50px]">
-
-            <Feature
-              icon={<Globe />}
-              title="Access a global network"
-              text="Shippers, carriers, brokers, buyers and sellers in one place."
-            />
-
-            <Feature
-              icon={<ShieldCheck />}
-              title="Verified partners"
-              text="Work with trusted and audited businesses."
-            />
-
-            <Feature
-              icon={<Clock />}
-              title="Save time and cost"
-              text="Compare quotes and get to market faster."
-            />
-
-            <Feature
-              icon={<TrendingUp />}
-              title="Grow your business"
-              text="Find new opportunities worldwide."
-            />
-
-          </div>
-
-
-          {/* QUOTE */}
-
-          <div className="mt-auto pb-8 pt-8">
-
-            <div className="w-[300px] rounded-xl bg-black/70 backdrop-blur-sm px-7 py-5 shadow-lg">
-
-              <p className="text-[17px] italic font-medium leading-[1.4] text-white">
-                “A simpler way to move
-                <br />
-                the world's goods.”
+              <p
+                className="
+                  mt-4
+                  text-[13px]
+                  sm:text-[14px]
+                  leading-[1.55]
+                  text-[#52617a]
+                  max-w-[440px]
+                "
+              >
+                Connect with verified partners, get the best rates,
+                and move goods with confidence.
               </p>
 
-              <div className="mt-4 w-9 h-[3px] rounded-full bg-[#20b8ff]" />
+            </div>
+
+            {/* FEATURES */}
+
+            <div className="mt-7 lg:mt-8 space-y-4">
+
+              <Feature
+                icon={<Globe />}
+                title="Access a global network"
+                text="Shippers, carriers, brokers, buyers and sellers in one place."
+              />
+
+              <Feature
+                icon={<ShieldCheck />}
+                title="Verified partners"
+                text="Work with trusted and audited businesses."
+              />
+
+              <Feature
+                icon={<Clock />}
+                title="Save time and cost"
+                text="Compare quotes and get to market faster."
+              />
+
+              <Feature
+                icon={<TrendingUp />}
+                title="Grow your business"
+                text="Find new opportunities worldwide."
+              />
+
+            </div>
+
+            {/* QUOTE */}
+
+            <div className="mt-8 lg:mt-auto pb-8 pt-4 lg:pt-8">
+
+              <div
+                className="
+                  w-full
+                  max-w-[300px]
+                  rounded-xl
+                  bg-black/70
+                  backdrop-blur-sm
+                  px-6
+                  sm:px-7
+                  py-5
+                  shadow-lg
+                "
+              >
+
+                <p className="text-[16px] sm:text-[17px] italic font-medium leading-[1.4] text-white">
+                  “A simpler way to move
+                  <br />
+                  the world's goods.”
+                </p>
+
+                <div className="mt-4 w-9 h-[3px] rounded-full bg-[#20b8ff]" />
+
+              </div>
 
             </div>
 
           </div>
 
-        </div>
+          {/* ================= RIGHT ================= */}
 
+          <div
+            className="
+              lg:col-span-5
+              flex
+              justify-end
+              pt-2
+              sm:pt-4
+              lg:pt-6
+              pb-8
+              w-full
+            "
+          >
 
-        {/* ================= RIGHT ================= */}
+            {/* FORM CARD */}
 
-        <div className="lg:col-span-5 flex justify-end pt-5 lg:pt-6 pb-8">
+            <div
+              className="
+                w-full
+                max-w-[750px]
+                bg-white
+                rounded-2xl
+                border
+                border-gray-200
+                shadow-[0_5px_25px_rgba(20,45,80,0.10)]
+                p-4
+                sm:p-6
+                lg:p-8
+                overflow-hidden
+              "
+            >
 
-          {/* FORM CARD — UNTOUCHED */}
+              <div className="mb-5">
 
-          <div className="w-full max-w-[750px] bg-white rounded-2xl border border-gray-200 shadow-[0_5px_25px_rgba(20,45,80,0.10)] p-6 sm:p-7 lg:p-8">
+                <h2 className="text-xl sm:text-2xl font-bold text-[#101b35]">
+                  Create your account
+                </h2>
 
-            <div className="mb-5">
+                <p className="text-xs text-gray-500 mt-1 leading-5">
+                  Join FreightHub and start connecting with global trade and
+                  logistics partners.
+                </p>
 
-              <h2 className="text-2xl font-bold text-[#101b35]">
-                Create your account
-              </h2>
+              </div>
 
-              <p className="text-xs text-gray-500 mt-1">
-                Join FreightHub and start connecting with global trade and
-                logistics partners.
-              </p>
+              <StepIndicator currentStep={currentStep} />
 
-            </div>
+              {/* EXISTING FORMS — NO CHANGE */}
 
+              <div className="mt-6 w-full">
 
-            <StepIndicator currentStep={currentStep} />
+                {currentStep === 1 && (
+                  <Step1Basic
+                    formData={formData}
+                    setFormData={setFormData}
+                    onNext={handleNext}
+                  />
+                )}
 
+                {currentStep === 2 && (
+                  <Step2Business
+                    formData={formData}
+                    setFormData={setFormData}
+                    onNext={handleNext}
+                    onBack={handleBack}
+                  />
+                )}
 
-            {/* EXISTING FORMS — NO CHANGE */}
+                {currentStep === 3 && (
+                  <Step3Verification
+                    formData={formData}
+                    setFormData={setFormData}
+                    onBack={handleBack}
+                    onSubmit={handleSubmit}
+                  />
+                )}
 
-            <div className="mt-6">
-
-              {currentStep === 1 && (
-                <Step1Basic
-                  formData={formData}
-                  setFormData={setFormData}
-                  onNext={handleNext}
-                />
-              )}
-
-              {currentStep === 2 && (
-                <Step2Business
-                  formData={formData}
-                  setFormData={setFormData}
-                  onNext={handleNext}
-                  onBack={handleBack}
-                />
-              )}
-
-              {currentStep === 3 && (
-                <Step3Verification
-                  formData={formData}
-                  setFormData={setFormData}
-                  onBack={handleBack}
-                  onSubmit={handleSubmit}
-                />
-              )}
+              </div>
 
             </div>
 
@@ -371,251 +738,53 @@ return (
 
       </div>
 
-    </div>
-
-  </main>
-);
-
-//   return (
-//     <main className="relative min-h-screen w-full bg-[#eef4fb]">
-
-//       {/* =====================================================
-//           FULL PAGE BACKGROUND IMAGE
-//       ====================================================== */}
-
-//       <div className="fixed inset-0 -z-10">
-
-//         <img
-//           src="https://images.unsplash.com/photo-1578575437130-527eed3abbec?q=90&w=2200&auto=format&fit=crop"
-//           alt=""
-//           className="absolute inset-0 w-full h-full object-cover object-center"
-//         />
-
-//         {/* Main light overlay */}
-//         <div className="absolute inset-0 bg-gradient-to-r from-[#eef5fd]/95 via-[#eef5fd]/80 to-[#eef5fd]/25" />
-
-//         {/* Top light fade */}
-//         <div className="absolute inset-0 bg-gradient-to-b from-[#eef5fd]/90 via-[#eef5fd]/35 to-transparent" />
-
-//       </div>
-
-
-//       {/* =====================================================
-//           PAGE CONTENT
-//       ====================================================== */}
-
-//       <div className="relative z-10 w-full px-5 sm:px-7 lg:px-9 xl:px-12 py-4 lg:py-5">
-
-//         {/* =================================================
-//             TOP ROW
-//         ================================================== */}
-
-//         <div className="flex items-start justify-between">
-
-//           {/* ================= BRAND ================= */}
-
-//           <div className="flex items-center gap-2.5">
-
-//             {/* <div className="bg-[#0877ed] text-white p-2 rounded-lg shadow-sm">
-//               <Ship className="w-5 h-5" />
-//             </div> */}
-
-//             <div className="leading-none">
-
-//               <div className="font-extrabold text-[21px] tracking-[-0.8px] text-[#10203f]">
-//                 RBS<span className="text-[#0877ed]"> MARKETPLACE</span>
-//               </div>
-
-//               <div className="text-[9px] text-[#52617a] tracking-wide mt-1">
-//                 Move Business Forward
-//               </div>
-
-//             </div>
-
-//           </div>
-
-
-//           {/* ================= SIGN IN ================= */}
-
-//           <div className="flex items-center gap-3">
-
-//             <span className="text-[12px] text-[#34445d] font-medium hidden sm:block">
-//               Already have an account?
-//             </span>
-
-//             <a
-//               href="/signin"
-//               className="h-9 px-5 rounded-lg border border-[#72a5e8] bg-white flex items-center justify-center text-[12px] font-bold text-[#1769d3] shadow-sm hover:bg-[#f8fbff] transition"
-//             >
-//               Sign in
-//             </a>
-
-//           </div>
-
-//         </div>
-
-
-//         {/* =================================================
-//             MAIN CONTENT
-//         ================================================== */}
-
-//         <div className="grid grid-cols-1 lg:grid-cols-12 gap-7 xl:gap-10 items-start mt-3 lg:mt-2">
-
-//           {/* =================================================
-//               LEFT SIDE CONTENT
-//           ================================================== */}
-
-//          <div className="lg:col-span-5 xl:col-span-7 lg:pl-[200px] flex flex-col min-h-[calc(100vh-100px)] pt-5 lg:pt-6">
-
-//   {/* ================= HEADING ================= */}
-
-//   <div>
-//     <h1 className="text-[35px] sm:text-[40px] lg:text-[39px] xl:text-[43px] font-extrabold tracking-[-1.7px] leading-[1.08] text-[#10203f]">
-//       Join a global trade and logistics marketplace
-//     </h1>
-
-//     <p className="mt-4 text-[13px] lg:text-[14px] leading-[1.55] text-[#52617a] max-w-[440px]">
-//       Connect with verified partners, get the best rates,
-//       and move goods with confidence.
-//     </p>
-//   </div>
-
-
-//   {/* ================= FEATURES ================= */}
-
-//   <div className="mt-6 lg:mt-7 space-y-3.5">
-
-//     <Feature
-//       icon={<Globe />}
-//       title="Access a global network"
-//       text="Shippers, carriers, brokers, buyers and sellers in one place."
-//     />
-
-//     <Feature
-//       icon={<ShieldCheck />}
-//       title="Verified partners"
-//       text="Work with trusted and audited businesses."
-//     />
-
-//     <Feature
-//       icon={<Clock />}
-//       title="Save time and cost"
-//       text="Compare quotes and get to market faster."
-//     />
-
-//     <Feature
-//       icon={<TrendingUp />}
-//       title="Grow your business"
-//       text="Find new opportunities worldwide."
-//     />
-
-//   </div>
-
-
-//   {/* ================= QUOTE — BOTTOM ================= */}
-
-//   <div className="mt-auto pt-8 pb-2">
-
-//     <div className="w-[300px] rounded-xl bg-[#14263c]/90 backdrop-blur-sm px-7 py-5 shadow-lg">
-
-//       <p className="text-[17px] italic font-medium leading-[1.4] text-white">
-//         “A simpler way to move
-//         <br />
-//         the world's goods.”
-//       </p>
-
-//       <div className="mt-4 w-9 h-[3px] rounded-full bg-[#20b8ff]" />
-
-//     </div>
-
-//   </div>
-
-// </div>
-
-
-
-//           {/* =================================================
-//               RIGHT SIDE — WHITE FORM CARD
-//           ================================================== */}
-
-//           <div className="lg:col-span-5 xl:col-span-5 flex justify-end pb-8">
-
-//             <div className="w-full max-w-[750px] bg-white rounded-2xl border border-gray-200 shadow-[0_5px_25px_rgba(20,45,80,0.10)] p-6 sm:p-7 lg:p-8">
-
-//               {/* ================= FORM HEADER ================= */}
-
-//               <div className="mb-5">
-
-//                 <h2 className="text-2xl font-bold text-[#101b35]">
-//                   Create your account
-//                 </h2>
-
-//                 <p className="text-xs text-gray-500 mt-1">
-//                   Join FreightHub and start connecting with global trade and
-//                   logistics partners.
-//                 </p>
-
-//               </div>
-
-
-//               {/* ================= EXISTING STEPPER ================= */}
-
-//               <StepIndicator currentStep={currentStep} />
-
-
-//               {/* =================================================
-//                   EXISTING FORM COMPONENTS
-
-//                   DO NOT CHANGE THESE
-//               ================================================== */}
-
-//               <div className="mt-6">
-
-//                 {currentStep === 1 && (
-//                   <Step1Basic
-//                     formData={formData}
-//                     setFormData={setFormData}
-//                     onNext={handleNext}
-//                   />
-//                 )}
-
-//                 {currentStep === 2 && (
-//                   <Step2Business
-//                     formData={formData}
-//                     setFormData={setFormData}
-//                     onNext={handleNext}
-//                     onBack={handleBack}
-//                   />
-//                 )}
-
-//                 {currentStep === 3 && (
-//                   <Step3Verification
-//                     formData={formData}
-//                     setFormData={setFormData}
-//                     onBack={handleBack}
-//                     onSubmit={handleSubmit}
-//                   />
-//                 )}
-
-//               </div>
-
-//             </div>
-
-//           </div>
-
-//         </div>
-
-//       </div>
-
-//     </main>
-//   );
+    </main>
+  );
 }
 
 
-/* ============================================================
-   FEATURE COMPONENT
-============================================================ */
+/* ================= FEATURE COMPONENT ================= */
 
+// function Feature({ icon, title, text }) {
+//   return (
+//     <div className="flex items-start gap-3 sm:gap-4">
+
+//       <div
+//         className="
+//           shrink-0
+//           w-9
+//           h-9
+//           sm:w-10
+//           sm:h-10
+//           rounded-lg
+//           bg-white
+//           border
+//           border-[#d8e5f5]
+//           shadow-sm
+//           flex
+//           items-center
+//           justify-center
+//           text-[#0877ed]
+//         "
+//       >
+//         {icon}
+//       </div>
+
+//       <div className="min-w-0">
+
+//         <h3 className="text-[13px] sm:text-[14px] font-bold text-[#10203f]">
+//           {title}
+//         </h3>
+
+//         <p className="mt-1 text-[11px] sm:text-[12px] leading-[1.5] text-[#52617a] max-w-[390px]">
+//           {text}
+//         </p>
+
+//       </div>
+
+//     </div>
+//   );
+// }
 function Feature({
   icon,
   title,
